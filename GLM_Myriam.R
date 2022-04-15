@@ -176,6 +176,7 @@ gvlma(g_freq)
 #Modelo poisson sobre todas las variables del estudio teniendo en cuenta a 
 #ASE32.1CuantasPersonasTieneIngresoHogarDD y Ates del Desplazamiento
 
+
 attach(Data)
 
 #ASE32.1CuantasPersonasTieneIngresoHogarDD
@@ -183,16 +184,16 @@ attach(Data)
 modpoisson1
 a<-glm(ASE32.1CuantasPersonasTieneIngresoHogarAD~SD_CuantasPersonasVivenConUstedAD+SD_NivelEduAD,family= poisson(link = "log"))
 
-
+#Model ASPAD-------------------------------------
 ASP41.1antesSuViviendaContabaConServicioEnergíaAD+ASP44.1SuViviendaContabaConServicioRecogidaBasuraAD+
   ASP45.1SuViviendaContabaConServicioLíneaTelefonicaFijaAD+ASP47.1SuViviendaContabaConServicioInternetAD+
   ASP48.1SuViviendaContabaConServicioGasPropanoAD+ASP49.1CuálEsElServicioMásCaroAD+
   ASP49.1.1CuálEsElServicioMásCaroADAlcantarillado+ASP49.1.2CuálEsElServicioMásCaroADGas+ASP49.1.3CuálEsElServicioMásCaroADLuz+
   ASP49.1.4CuálEsElServicioMásCaroADAgua+ASP49.1.5CuálEsElServicioMásCaroADTelefonia+
-  ASP50.1CostosMensualesServiciosADUSD+ASP51.1ComoEsLaCalidadDeLosServiciosAD+ASP52.1QueHacíaConLosResiduosAD
-ASP40.1SuViviendaContabaConServicioGasAD+ASP43.1SuViviendaContabaConServicioAlcantarilladoAD+
+  ASP50.1CostosMensualesServiciosADUSD+ASP51.1ComoEsLaCalidadDeLosServiciosAD+ASP52.1QueHacíaConLosResiduosAD+
+  ASP40.1SuViviendaContabaConServicioGasAD+ASP43.1SuViviendaContabaConServicioAlcantarilladoAD+
   ASP46.2SuViviendaContabaConServicioTVCableAD+ASP42.1SuViviendaContabaConServicioAguaAD
-
+#Model ALAD-------------------------------
 AL147.1TeníaMarcasPreferidasAseoPersonalAD+AL148.1GastoMensualProductosAseoPersonalADUSD+
   AL149.1UstedoFamiliaSeBañanAireLibreAD+AL150.1DondeBañabanRegularmenteAD+AL145.1GastoMensualProductosLimpiezaUSDAD+
   AL146.1ProductosAseoPersonalUtilizabaAD+AL146.1.1ProductosAseoPersonalUtilizabaADJabónBarra+
@@ -206,7 +207,7 @@ AL147.1TeníaMarcasPreferidasAseoPersonalAD+AL148.1GastoMensualProductosAseoPers
   AL144.1.7ProductosDLimpiezAMásUsadosADJabónpolvo+AL144.1.8ProductosDLimpiezAMásUsadosADEscoba+
   AL143.1ComprabaProductosAseoParaCasaAD+AL27.1OcupaciónAD+AL28.1TipoContratoAD+AL30.1SuTrabajoEraAD+
   AL31.1CuántoGanabaMensualmenteAD+AL29.1SectorTrabajoAD
-
+#Model TLAD-------------------------------
 TL153.1ActividadesRealizaEnTiempoLibreAD+TL153.1.1ActividadesRealizaEnTiempoLibreADTrabajar+
   TL153.1.2ActividadesRealizaEnTiempoLibreADRezar+TL153.1.3ActividadesRealizaEnTiempoLibreADComer+
   TL153.1.4ActividadesRealizaEnTiempoLibreADAyudarLaboresDomestica+TL153.1.5ActividadesRealizaEnTiempoLibreADDormir+
@@ -218,24 +219,38 @@ TL153.1ActividadesRealizaEnTiempoLibreAD+TL153.1.1ActividadesRealizaEnTiempoLibr
   TL155.1EnTiempoLibreComparteFamiliaAD+TL156.1EnTiempoLibrePrefiereActividadesDomésticasAD
 
 C151.1HaSolicitadoCréditosoPrestamosDineroAD
-
-T137.1QuéElementosTeCnologicosEstabanSuoHogarAD+T137.1.1QuéElementosTeCnologicosEstabanSuoHogarADTelevisor+T137.1.2QuéElementosTeCnologicosEstabanSuoHogarADEquipoDSonido+T137.1.3QuéElementosTeCnologicosEstabanSuoHogarADNevera+T137.1.4QuéElementosTeCnologicosEstabanSuoHogarADLavadora+T137.1.5QuéElementosTeCnologicosEstabanSuoHogarADEstufa+T137.1.6QuéElementosTeCnologicosEstabanSuoHogarADHornoMicroonda+
-  T137.1.7QuéElementosTeCnologicosEstabanSuoHogarADComputador+T137.8QuéElementosTeCnologicosEstabanSuoHogarADTeléfonoFijo+T137.1.9QuéElementosTeCnologicosEstabanSuoHogarADCelular+T137.1.10QuéElementosTeCnologicosEstabanSuoHogarADRadio+T137.1.11QuéElementosTeCnologicosEstabanSuoHogarADLicuadora+T138.1ElectrodomesticoMásImportanteSuCasaAD+T138.1.1ElectrodomesticoMásImportanteSuCasaADTelevisor+T138.1.2ElectrodomesticoMásImportanteSuCasaADNevera+
-  T138.1.3ElectrodomesticoMásImportanteSuCasaADLavadora+T138.1.4ElectrodomesticoMásImportanteSuCasaADComputador+T138.1.5ElectrodomesticoMásImportanteSuCasaADCelular+T138.2.1ElectrodomesticoMásImportanteSuCasaADTelevisor+T138.2.2ElectrodomesticoMásImportanteSuCasaADNevera+T138.2.3ElectrodomesticoMásImportanteSuCasaADLavadora+T138.2.4ElectrodomesticoMásImportanteSuCasaADCelular+T139.1ElectrodomesticoPreferidoPorHijosAD+T139.1.1ElectrodomesticoPreferidoPorHijosADTelevisor+
-  T139.1.2ElectrodomesticoPreferidoPorHijosADLavadora+T139.1.3ElectrodomesticoPreferidoPorHijosADComputador+T139.1.4ElectrodomesticoPreferidoPorHijosADCelular+T140.1ElectrodomesticosUtilizabanParaEntretenimientoAD+T140.1.1ElectrodomesticosUtilizabanParaEntretenimientoADTeleviso+T140.1.2ElectrodomesticosUtilizabanParaEntretenimientoADEquipoDs+T140.1.3ElectrodomesticosUtilizabanParaEntretenimientoADCelulari+T140.1.4ElectrodomesticosUtilizabanParaEntretenimientoADCelularb+
+#Model TAD-------------------------------
+T137.1QuéElementosTeCnologicosEstabanSuoHogarAD+T137.1.1QuéElementosTeCnologicosEstabanSuoHogarADTelevisor+
+  T137.1.2QuéElementosTeCnologicosEstabanSuoHogarADEquipoDSonido+T137.1.3QuéElementosTeCnologicosEstabanSuoHogarADNevera+
+  T137.1.4QuéElementosTeCnologicosEstabanSuoHogarADLavadora+T137.1.5QuéElementosTeCnologicosEstabanSuoHogarADEstufa+
+  T137.1.6QuéElementosTeCnologicosEstabanSuoHogarADHornoMicroonda+T137.1.7QuéElementosTeCnologicosEstabanSuoHogarADComputador+
+  T137.8QuéElementosTeCnologicosEstabanSuoHogarADTeléfonoFijo+T137.1.9QuéElementosTeCnologicosEstabanSuoHogarADCelular+
+  T137.1.10QuéElementosTeCnologicosEstabanSuoHogarADRadio+T137.1.11QuéElementosTeCnologicosEstabanSuoHogarADLicuadora+
+  T138.1ElectrodomesticoMásImportanteSuCasaAD+T138.1.1ElectrodomesticoMásImportanteSuCasaADTelevisor+
+  T138.1.2ElectrodomesticoMásImportanteSuCasaADNevera+T138.1.3ElectrodomesticoMásImportanteSuCasaADLavadora+
+  T138.1.4ElectrodomesticoMásImportanteSuCasaADComputador+T138.1.5ElectrodomesticoMásImportanteSuCasaADCelular+
+  T138.2.1ElectrodomesticoMásImportanteSuCasaADTelevisor+T138.2.2ElectrodomesticoMásImportanteSuCasaADNevera+
+  T138.2.3ElectrodomesticoMásImportanteSuCasaADLavadora+T138.2.4ElectrodomesticoMásImportanteSuCasaADCelular+
+  T139.1ElectrodomesticoPreferidoPorHijosAD+T139.1.1ElectrodomesticoPreferidoPorHijosADTelevisor+
+  T139.1.2ElectrodomesticoPreferidoPorHijosADLavadora+T139.1.3ElectrodomesticoPreferidoPorHijosADComputador+
+  T139.1.4ElectrodomesticoPreferidoPorHijosADCelular+T140.1ElectrodomesticosUtilizabanParaEntretenimientoAD+
+  T140.1.1ElectrodomesticosUtilizabanParaEntretenimientoADTeleviso+
+  T140.1.2ElectrodomesticosUtilizabanParaEntretenimientoADEquipoDs+
+  T140.1.3ElectrodomesticosUtilizabanParaEntretenimientoADCelulari+
+  T140.1.4ElectrodomesticosUtilizabanParaEntretenimientoADCelularb+
   T141.1CómoObteníaElectrodomesticosAD+T142.1DóndeAdquirióLosELectrodomesticosAD
-
+#Model ASEDD-------------------------------
 ASE33.1VinculoFamiliarTieneMayorIngresoHogarAD+ASE33.1.1FamiliarTieneMayorIngresoHogarAD+
   ASE33.1.2FamiliarTieneMayorIngresoHogarAD+ASE33.1.3FamiliarTieneMayorIngresoHogarAD+ASE33.1.4FamiliarTieneMayorIngresoHogarAD+
   ASE34.1QuienAportaMásDineroCasaAD+ASE34.1.1QuienAportaMásDineroCasaAntesPadreAD+ASE34.1.6QuienAportaMásDineroCasaAntesYoAD+
   ASE36.1FuenteIngresosAD+ASE37.1IngresosMensualesCasaDolaresAD+ASE38.1.2PersonaEncargadaDeFamiliaADMadre+
   ASE38.1.3PersonaEncargadaDeFamiliaADHijos+ASE38.1.4PersonaEncargadaDeFamiliaADHermanos+ASE38.1.5PersonaEncargadaDeFamiliaADYo+
   ASE38.1.6PersonaEncargadaDeFamiliaADOtro+ASE39.1PersonasDependenUstedAD+ASE34.1.3QuienAportaMásDineroCasaAntesHijosAD+
-  ASE34.1.4QuienAportaMásDineroCasaAntesHermanosAD+ASE32.1CuantasPersonasTieneIngresoHogarAD
-ASE34.1.1QuienAportaMásDineroCasaAntesPadreAD+ASE34.1.2QuienAportaMásDineroCasaAntesMadreAD+ASE38.1PersonaEncargadaDeFamiliaAD+
+  ASE34.1.4QuienAportaMásDineroCasaAntesHermanosAD+ASE32.1CuantasPersonasTieneIngresoHogarAD+
+  ASE34.1.1QuienAportaMásDineroCasaAntesPadreAD+ASE34.1.2QuienAportaMásDineroCasaAntesMadreAD+ASE38.1PersonaEncargadaDeFamiliaAD+
   ASE38.1.1PersonaEncargadaDeFamiliaADPadre
 
-
+#Model RAD-----------------------
 R121.1LugaresDondeGustabaDivertirseAD+R121.1.1LugaresDondeGustabaDivertirseADParque+
   R121.1.2LugaresDondeGustabaDivertirseADCasa+R121.1.3LugaresDondeGustabaDivertirseADPueblo+
   R121.1.4LugaresDondeGustabaDivertirseADCasaAmigosFamiliares+R121.1.5LugaresDondeGustabaDivertirseADMar+
@@ -257,16 +272,13 @@ EH113.1AlgúnMomentoHijosDejaronEstudiarPortrabajarAD+EH114.1PagaEducaciónHijos
   EH115.1PagoEducaciónEsUnaCargaEconómicaAD+EH116.1HijosTenianMarcasPreferidasDÚtilesAD+
   EH117.1HacíaTruequeObtenerÚtilesEscolaresAD+EH118.1ComprabanÚtilesEscolaresAntesHijosIniciaranClaseAD+
   EH119.1FirmóDocumentoFormalizarInscripciónColegioAD+EH120.1NecesitabaUtilizarUniformeAD+
-  EH98.1AQuéSistemaEducativoPerteneciaAD+EH99.1LosNiñosRecibiánEducaciónAD+EH100.1ComoObteniaLosÚtilesEscolaresAD
-+EH101.1QuienLeDonabaORegalabaÚtilesAD+EH102.1DemorabaMásDeUnaHoraLlegarAlColegioAD+EH104.1LeCobrabanEducaciónHijosAD+
-  EH105.1HijosHanReprobadoAlgunAñoAD+EH105.2HijosHanReprobadoAlgunAñoDD+EH106.1PorqueReprobaronAD+
-  EH107.1FrecuenciaCompraÚtilesEscolaresAD+EH103.1MedioTrasporteUtilizabaParAllegarEscuelaAD+
-  EH95.1ViviaConHijosAD+EH108.1CuantoGastabaCompraÚtilesAD+EH109.1NivelEducativOMásAltoAlcanzadoHijosAD
-EH95.2ViviaConHijosDD	EH96.1SusHijosEstudiabanAD
-EH97.1HijosEranBuenosEstudiantesAD
-EH110.1NivelAcadémicoMásBajoAlcanzadoHijosAD
-EH111.1TipoDConstrucciónEscuelaAD
-EH112.1AsisteReunionesDPadresMadresDFamiliaAD
+  EH98.1AQuéSistemaEducativoPerteneciaAD+EH99.1LosNiñosRecibiánEducaciónAD+EH100.1ComoObteniaLosÚtilesEscolaresAD+
+  EH101.1QuienLeDonabaORegalabaÚtilesAD+EH102.1DemorabaMásDeUnaHoraLlegarAlColegioAD+EH104.1LeCobrabanEducaciónHijosAD+
+  EH105.1HijosHanReprobadoAlgunAñoAD+EH106.1PorqueReprobaronAD+EH107.1FrecuenciaCompraÚtilesEscolaresAD+
+  EH103.1MedioTrasporteUtilizabaParAllegarEscuelaAD+EH95.1ViviaConHijosAD+EH108.1CuantoGastabaCompraÚtilesAD+
+  EH109.1NivelEducativOMásAltoAlcanzadoHijosAD+EH96.1SusHijosEstudiabanAD+EH97.1HijosEranBuenosEstudiantesAD+
+  EH110.1NivelAcadémicoMásBajoAlcanzadoHijosAD+EH111.1TipoDConstrucciónEscuelaAD+EH112.1AsisteReunionesDPadresMadresDFamiliaAD
+
 
   
   LV53.1TechoAD+LV53.1.1TechoADTejaDBarro+LV53.1.2TechoADConcreto+
@@ -292,7 +304,7 @@ EH112.1AsisteReunionesDPadresMadresDFamiliaAD
   AN89.2.1ComidaConsumdaDiariamenteADDesayuno	AN89.2.2ComidaConsumdaDiariamenteADMediasNueves	AN89.2.3ComidaConsumdaDiariamenteADAlmuerzo
   AN89.2.5ComidaConsumdaDiariamenteADOnces
 AN91.1FrecuenciaConsumoCarneDCorderoAD
-AN92.1FrecuenciaConsumoPescadoAD
+AN92.1FrecuenciaConsumoPescadoAD+AN83.1PescaOCazaAD
 AN93.1FrecuenciaConsumoPollOAD
 
   
@@ -339,19 +351,43 @@ AN93.1FrecuenciaConsumoPollOAD
   
   LV54.2ParedesDD	LV54.1.1ParedesDDPlástico	LV54.1.2ParedesDDConcreto	LV54.1.3ParedesDDLata	LV54.1.4ParedesDDMadera	LV54.1.5ParedesDDTela		LV55.2PisosDD	LV55.2.1PisosDDTierra	LV55.2.2PisosDDCemento	LV55.2.3PisosDDLadrillo	LV55.2.4PisosDDBloque	LV55.2.5PisosDDPiedra	LV55.2.6PisosDDOtro		LV56.2TamañoCasaDD		LV57.2TamañoCasaMetrosCuadradosDD		LV58.2TipoViviendaHabitabaDD	LV59.1DondeViviaEraAD	LV59.2DondeViveEsDD		LV60.2PagoDArrendamientoDD (USD)		LV61.2PersonasVivenSuHogarMayoresD65AñosDD		LV62.1PersonasVivenSuHogarMenoresD18AñosDD	
   
-  S63.2KilogramosDD 	S63.2AñosDD		S64.2EstadoDSaludDD		 S65.2EstadoDSaludFamiliaDD		S67.2NúmeroVecesEnfermaAñoDD	"													"	S68.1.1TipoDEnfermedadesADDigestivas		"S68.2TipoDEnfermedadesDD													"			S70.1.2ServicioDSaludPreferenciaDD		S71.2AdóndeAcudeCndoEstabaEnfermoDD	S71.2.1AdóndeAcudeCndoEstabaEnfermoDDAux. Farmacia	S71.2.2AdóndeAcudeCndoEstabaEnfermoDDHospital	S71.2.3AdóndeAcudeCndoEstabaEnfermoDDFamilia	S71.2.4AdóndeAcudeCndoEstabaEnfermoDDOtro		S72.1.2SusHijosNacieroEnDD 	S72.1.2.1SusHijosNacieroEnDDHospital	S72.1.2SusHijosNacieroEnDDOtro		S73.2SeEncuentraAfiliadoSistemaSaludDD	S74.1ASolicitado citaEspecialistaDD		S75CómoEraSservicioSalud		S76.1LasInstalacionesDelServicioSaludEranDD		S77.1.1DeCuantoAD	S77.2RealizabaPagoMensualServicioDSaludDD	S77.2.1DeCuantoDD		S78.2NoRecibioServiciosAFaltaDEquiposOProfesionalesDD		S79.2AlSolicitarServicioDSaludAtendíanInmediatamenteDD		S80.2ConsiderabaLaPrestaciónDelServicioDSAludDD		
-  AN81.2FrecuenciaCompraAlimentosAlMesDD		AN82.2LugarDCompADAlimentosDD	AN83.1PescaOCazaAD	AN83.2PescaOCazaDD		AN84.2CultivandoDD		AN85.2IntercambioAlimentosUObjetosDD		AN86.2TomandolosDLaCanecaDD		AN87.1MercadosDonadosDD		AN88.2SubsidioParaCompraDAlimentosDD			"	"	AN89.2ComidaConsumdaDiariamenteDD		"		AN90.1FrecuenciaConsumoCarneDResDD		AN91.2FrecuenciaConsumoCarneDCorderoDD		AN92.2FrecuenciaConsumoPescadoDD		AN93.2FrecuenciaConsumoPolloDD		AN94.2FrecuenciaConsumoComidasRapidasDD		
+#Model SDD------------------------------------------------  
+  S63.2KilogramosDD+S63.2AñosDD+S64.2EstadoDSaludDD+S65.2EstadoDSaludFamiliaDD+S67.2NúmeroVecesEnfermaAñoDD+
+    S68.1.1TipoDEnfermedadesADDigestivas+S68.2TipoDEnfermedadesDD+S70.1.2ServicioDSaludPreferenciaDD+
+    S71.2AdóndeAcudeCndoEstabaEnfermoDD+S71.2.2AdóndeAcudeCndoEstabaEnfermoDDHospital+S71.2.3AdóndeAcudeCndoEstabaEnfermoDDFamilia+
+    S71.2.4AdóndeAcudeCndoEstabaEnfermoDDOtro+S72.1.2SusHijosNacieroEnDD+S72.1.2.1SusHijosNacieroEnDDHospital+
+    S72.1.2SusHijosNacieroEnDDOtro+S73.2SeEncuentraAfiliadoSistemaSaludDD+S74.1ASolicitadocitaEspecialistaDD+
+    S75CómoEraSservicioSalud+S76.1LasInstalacionesDelServicioSaludEranDD+S77.1.1DeCuantoAD+S77.2RealizabaPagoMensualServicioDSaludDD+
+    S77.2.1DeCuantoDD+S78.2NoRecibioServiciosAFaltaDEquiposOProfesionalesDD+S79.2AlSolicitarServicioDSaludAtendíanInmediatamenteDD+
+    S80.2ConsiderabaLaPrestaciónDelServicioDSAludDD+S71.2.1AdóndeAcudeCndoEstabaEnfermoDDAux.Farmacia	
+  
+#Model ANDD--------------------------------------------------------------------
+    AN81.2FrecuenciaCompraAlimentosAlMesDD+AN82.2LugarDCompADAlimentosDD+AN83.2PescaOCazaDD+AN84.2CultivandoDD+AN85.2IntercambioAlimentosUObjetosDD+AN86.2TomandolosDLaCanecaDD+AN87.1MercadosDonadosDD+AN88.2SubsidioParaCompraDAlimentosDD+AN89.2ComidaConsumdaDiariamenteDD+AN90.1FrecuenciaConsumoCarneDResDD+AN91.2FrecuenciaConsumoCarneDCorderoDD+AN92.2FrecuenciaConsumoPescadoDD+AN93.2FrecuenciaConsumoPolloDD+AN94.2FrecuenciaConsumoComidasRapidasDD		
 
+#Model EHDD----------------------------------------------------------
 
-	EH96.2SusHijosEstudianDD		EH97.2HijosSonBuenosEstudiantesDD		EH98.2AQuéSistemaEducativoPerteneDD		EH99.2LosNiñosRecibenEducaciónDD		EH100.1ComoObtieneLosÚtilesEscolaresDD		EH101.2QuienLeDonaORegalaÚtilesDD		EH102.1DemorMásDeUnaHoraLlegarAlColegioDD		EH103.2MedioTrasporteUtilizaParAllegarEscuelaDD		EH104.2LeCobranEducaciónHijosDD				EH106.1PorquEReprobaronDD		EH107.2FrecuenciaCompraÚtilesEscolaresDD		EH108.2CuantoGastaCompraÚtilesDD		EH109.2NivelEducativOMásAltoAlcanzadoHijosDD		EH110.2NivelAcadémicoMásBajoAlcanzadoHijosDD		EH111.2TipoDConstrucciónEscuelaDD		EH112.2AsisteReunionesDPadresMadresDFamiliaDD		EH113.2AlgúnMomentoHijosDejaronEstudiarPortrabajarDD			EH114.2PagaEducaciónHijosDD	EH114.2.1CuantoDD		EH115.2PagoEducaciónEsUnaCargaEconómica DD		EH116.2HijosTenianMarcasPreferidasDÚtileSDD		EH117.2HaceTruequeObtenerÚtilesEscolaresDD		EH118.2CompraÚtilesEscolaresAntesHijosIniciaranClaseDD		EH119.2FirmóDocumentoFormalizarInscripciónColegioDD		EH120.2NecesitabaUtilizarUniformeDD		
+	EH96.2SusHijosEstudianDD+EH97.2HijosSonBuenosEstudiantesDD+EH98.2AQuéSistemaEducativoPerteneDD+EH95.2ViviaConHijosDD+
+	EH105.2HijosHanReprobadoAlgunAñoDD+EH99.2LosNiñosRecibenEducaciónDD+EH100.1ComoObtieneLosÚtilesEscolaresDD+
+	EH101.2QuienLeDonaORegalaÚtilesDD+EH102.1DemorMásDeUnaHoraLlegarAlColegioDD+EH103.2MedioTrasporteUtilizaParAllegarEscuelaDD+
+	EH104.2LeCobranEducaciónHijosDD+EH106.1PorquEReprobaronDD+EH107.2FrecuenciaCompraÚtilesEscolaresDD+
+	EH108.2CuantoGastaCompraÚtilesDD+EH109.2NivelEducativOMásAltoAlcanzadoHijosDD+EH110.2NivelAcadémicoMásBajoAlcanzadoHijosDD+
+	EH111.2TipoDConstrucciónEscuelaDD+EH112.2AsisteReunionesDPadresMadresDFamiliaDD+
+	EH113.2AlgúnMomentoHijosDejaronEstudiarPortrabajarDD+EH114.2PagaEducaciónHijosDD+EH114.2.1CuantoDD+
+	EH115.2PagoEducaciónEsUnaCargaEconómicaDD+EH116.2HijosTenianMarcasPreferidasDÚtileSDD+EH117.2HaceTruequeObtenerÚtilesEscolaresDD+
+	EH118.2CompraÚtilesEscolaresAntesHijosIniciaranClaseDD+EH119.2FirmóDocumentoFormalizarInscripciónColegioDD+
+	EH120.2NecesitabaUtilizarUniformeDD		
 
-
+#Model RDD--------------------------------------------
 R121.2LugaresDondeGustabaDivertirseDD	R121.2.1LugaresDondeGustabaDivertirseDDCasa	R121.2.2LugaresDondeGustabaDivertirseDDCasino	R121.2.3LugaresDondeGustabaDivertirseDDCasaAmigos o familiares	R121.2.4LugaresDondeGustabaDivertirseDDNoSeDivierte 				R123.2HaConsumidoAgunaDrogaDD		R124.2AlgúnfamiliarconsumeDrogaDD		R125.2CuántoDineroGastaEnRecreaciónMesDD		R126.1TeníaPropiedadesDD		R127.2CuantasPropiedadesTeniaDD				R128.2TipoDPropiedadesDD	R128.2.1TipoDPropiedadeDDCasa	R128.2.2TipoDPropiedadesDDOtro		R129.2CómoObtuvoPropiedadDD		R130.2CómoObtuvoPropiedadADTeniaPapelesDPropiedadDD		R131.2UstedEsUnicoDueñoDePropiedadDD		R132.2TuvoNecesidadDAbandaonarSuPropiedadDD		
 
-
+#Model VDD---------------------------------------------------
 V133.2CómoAdquiriaRopaDD		V134.2CadaCuantoAdquiriaLaRopaDD		V135.2TienePreferenciAPorAlgunaMarcaDD		V136.2TienePreferenciaAlgunaMarcaDCalzadoDD		T137.2QuéElementosTeCnologicosEstanSuHogarDD	T137.2.1QuéElementosTeCnologicosEstanSuHogarDDTelevisor	T137.2.2QuéElementosTeCnologicosEstanSuHogarDDEquipoDSonido	T137.2.3QuéElementosTeCnologicosEstanSuHogarDDNevera	T137.2.4QuéElementosTeCnologicosEstanSuHogarDDLavadora	T137.2.5QuéElementosTeCnologicosEstanSuHogarDDEstufa	T137.2.6QuéElementosTeCnologicosEstanSuHogarDDHornoMicroondas	T137.2.7QuéElementosTeCnologicosEstanSuHogarDDTeléfonoFijo	T137.2.8QuéElementosTeCnologicosEstanSuHogarDDCelular	T137.2.9QuéElementosTeCnologicosEstanSuHogarDDPlancha	T137.2.10QuéElementosTeCnologicosEstanSuHogarDDRadio	T137.2.11QuéElementosTeCnologicosEstanSuHogarDDLicuadora		T138.2ElectrodomesticoMásImportanteSuCasaDD				T139.2ElectrodomesticoPreferidoPorHijosDD 	T139.2.1ElectrodomesticoPreferidoPorHijosDDTelevisor	T139.2.2ElectrodomesticoPreferidoPorHijosDDTeléfonofijo	T139.2.3ElectrodomesticoPreferidoPorHijosDDCelular		T140.2ElectrodomesticosUtilizaParaEntretenimientoDD	T140.2.1electrodomesticosUtilizaParaEntretenimientoDDelevisor	T140.2.2ElectrodomesticosUtilizaParaEntretenimientoDDEquipo de sonido	T140.2.3ElectrodomesticosUtilizaParaEntretenimientoDDCelularinteligente	T140.2.4ElectrodomesticosUtilizaParaEntretenimientoDDCelularbajagama		T141.2CómoObteníaElectrodomesticosDD		T142.2DóndeAdquirióLosELectrodomesticosDD		AL143.2CompraProductosAseoParaCasaDD		AL144.2ProductosDLimpiezAMásUsadosDD	AL144.2.1ProductosDLimpiezAMásUsadosDDJabónbarra	AL144.2.2ProductosDLimpiezAMásUsadosDDBlanqueador	AL144.2.3ProductosDLimpiezAMásUsadosDDJabónCocina	AL144.2.4ProductosDLimpiezAMásUsadosDDLimpiaVidrios	AL144.2.5ProductosDLimpiezAMásUsadosDDTrapero	AL144.2.6ProductosDLimpiezAMásUsadosDDLimpiaPisos	AL144.2.7ProductosDLimpiezAMásUsadosDDJabónpolvo	AL144.2.8ProductosDLimpiezAMásUsadosDDEscoba		AL146.2ProductosAseoPersonalUtilizaDD	AL146.2.1ProductosAseoPersonalUtilizaDDJabónBarra	AL146.2.2ProductosAseoPersonalUtilizaDDShampoo	AL146.2.3ProductosAseoPersonalUtilizaDDJabónintimo	AL146.2.4ProductosAseoPersonalUtilizaDDCremaafeitar 	AL146.2.5ProductosAseoPersonalUtilizaDDCremaCuerpo	AL146.2.6ProductosAseoPersonalUtilizaDDAcondicionador	AL146.2.7ProductosAseoPersonalUtilizaDDDesodorante		AL147.2TeníaMarcasPreferidasAseoPersonalDD		AL148.2GastoMensualProductosAseoPersonalDD(USD)		AL149.2UstedoFamiliaSeBañanAireLibreDD		AL150.2DondeBañabanRegularmenteDD		C151.2HasolicitadoCréditosoPrestamosDineroDD		TL152.2.1LugarDondePasaTiempoLibreDD	TL152.2.1LugarDondePasaTiempoLibreDDParque	TL152.2.2LugarDondePasaTiempoLibreDDCasa	TL152.2.3LugarDondePasaTiempoLibreDDCasaAmigosFamiliares		
-	TL153.2Actividades RealizaEnTiempoLibreDD	TL153.2.1ActividadesRealizaEnTiempoLibreDDTrabajar	TL153.2.2ActividadesRealizaEnTiempoLibreDDRezar	TL153.2.3ActividadesRealizaEnTiempoLibreDDComer	TL153.2.4ActividadesRealizaEnTiempoLibreDDAyudarLaboresDomesticas	TL153.2.5ActividadesRealizaEnTiempoLibreDDDormir	TL153.2.6ActividadesRealizaEnTiempoLibreDDBuscarTrabajo	TL153.2.7ActividadesRealizaEnTiempoLibreDDArreglosmecánicos		
+	
+#Model TLDD--------------------------------------  
+  TL153.2Actividades RealizaEnTiempoLibreDD	TL153.2.1ActividadesRealizaEnTiempoLibreDDTrabajar	TL153.2.2ActividadesRealizaEnTiempoLibreDDRezar	TL153.2.3ActividadesRealizaEnTiempoLibreDDComer	TL153.2.4ActividadesRealizaEnTiempoLibreDDAyudarLaboresDomesticas	TL153.2.5ActividadesRealizaEnTiempoLibreDDDormir	TL153.2.6ActividadesRealizaEnTiempoLibreDDBuscarTrabajo	TL153.2.7ActividadesRealizaEnTiempoLibreDDArreglosmecánicos		
 TL154.2El mar,otrosLugaresNaturalesPreferidosParaTiempoLibreDD		TL155.2EnTiempoLibreComparteFamiliaDD		TL156.2EnTiempoLibrePrefiereActividadesDomésticasDD+ AL145.2GastoMensualProductosLimpiezaUSDDD	
+
+#Variables por revisar------------------------
 157DondeViveActualmente	
 158SituaciónActualEs
 
