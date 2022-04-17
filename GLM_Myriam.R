@@ -22,32 +22,80 @@ pkg(packages)
 library(haven)
 Data <- read_sav("Descargas/Myriam/Data.sav")
 View(Data)
+Data[is.na(Data)] <- 0
 
+is.na(Data$AL31.1CuántoGanabaMensualmenteAD)
+ej<-Data$AL31.1CuántoGanabaMensualmenteAD
+view(ej)
 attach(Data)
+#Data Cleaning process-------------------------
+#replacing some missing values as 0
+Data[Data == "No Responde"] <- "0"
+str(ej)
+Data[Data == "0"] <- 0
+
+
+
 #i will review the variable income to see if its clean and OK to work with it
 view(Data$ASE37.1IngresosMensualesCasaDolaresAD)
 view(Data$ASE37.2IngresosMensualesCasaDolaresDD)
-#ASE32.1CuantasPersonasTieneIngresoHogarDD
-#,family= poisson(link = "log"))
-modpoisson1
-a<-glm(ASE32.1CuantasPersonasTieneIngresoHogarAD~SD_CuantasPersonasVivenConUstedAD+SD_NivelEduAD,family= poisson(link = "log"))
 
+#here i will transform the variable ASE37.1 into a new one wich is muneric
+incomes.ASE37.1AD<-as.numeric(Data$ASE37.1IngresosMensualesCasaDolaresAD)
+incomes.ASE37.2DD<-as.numeric(Data$ASE37.2IngresosMensualesCasaDolaresDD)
+
+#now i will statr with the modeling process with each group of variables.
+a<-glm(ASE32.1CuantasPersonasTieneIngresoHogarAD~SD_CuantasPersonasVivenConUstedAD+SD_NivelEduAD,family= poisson(link = "log"))
+Data$ASE37.1IngresosMensualesCasaDolaresAD
 #Model ASPAD-------------------------------------
-ASPAD<-glm(ASE37.1IngresosMensualesCasaDolaresAD~ASP41.1antesSuViviendaContabaConServicioEnergíaAD+ASP44.1SuViviendaContabaConServicioRecogidaBasuraAD+ASP45.1SuViviendaContabaConServicioLíneaTelefonicaFijaAD+ASP47.1SuViviendaContabaConServicioInternetAD+ASP48.1SuViviendaContabaConServicioGasPropanoAD+ASP49.1CuálEsElServicioMásCaroAD+ASP49.1.1CuálEsElServicioMásCaroADAlcantarillado+ASP49.1.2CuálEsElServicioMásCaroADGas+ASP49.1.3CuálEsElServicioMásCaroADLuz+ASP49.1.4CuálEsElServicioMásCaroADAgua+ASP49.1.5CuálEsElServicioMásCaroADTelefonia+ASP50.1CostosMensualesServiciosADUSD+ASP51.1ComoEsLaCalidadDeLosServiciosAD+ASP52.1QueHacíaConLosResiduosAD+ASP40.1SuViviendaContabaConServicioGasAD+ASP43.1SuViviendaContabaConServicioAlcantarilladoAD+ASP46.2SuViviendaContabaConServicioTVCableAD+ASP42.1SuViviendaContabaConServicioAguaAD,family= poisson(link = "log"))
+ASPAD<-glm(incomes.ASE37.1AD~ASP41.1antesSuViviendaContabaConServicioEnergíaAD+
+             ASP44.1SuViviendaContabaConServicioRecogidaBasuraAD+
+             ASP45.1SuViviendaContabaConServicioLíneaTelefonicaFijaAD+
+             ASP47.1SuViviendaContabaConServicioInternetAD+
+             ASP48.1SuViviendaContabaConServicioGasPropanoAD+
+             ASP49.1CuálEsElServicioMásCaroAD+
+             ASP49.1.1CuálEsElServicioMásCaroADAlcantarillado+
+             ASP49.1.2CuálEsElServicioMásCaroADGas+
+             ASP49.1.3CuálEsElServicioMásCaroADLuz+
+             ASP49.1.5CuálEsElServicioMásCaroADTelefonia+
+             ASP50.1CostosMensualesServiciosADUSD+
+             ASP51.1ComoEsLaCalidadDeLosServiciosAD+
+             ASP52.1QueHacíaConLosResiduosAD+
+             ASP40.1SuViviendaContabaConServicioGasAD+
+             ASP43.1SuViviendaContabaConServicioAlcantarilladoAD+
+             ASP46.2SuViviendaContabaConServicioTVCableAD+
+             ASP42.1SuViviendaContabaConServicioAguaAD,
+           family= poisson(link = "log"))
+
+ASPADsummary<-summary(ASPAD)
+expASPAD<-exp(ASPADsummary$coefficients)-1
+lrtestASPAD<-lrtest(expASPAD)
 #Model ALAD-------------------------------
-AL147.1TeníaMarcasPreferidasAseoPersonalAD+AL148.1GastoMensualProductosAseoPersonalADUSD+
-  AL149.1UstedoFamiliaSeBañanAireLibreAD+AL150.1DondeBañabanRegularmenteAD+AL145.1GastoMensualProductosLimpiezaUSDAD+
-  AL146.1ProductosAseoPersonalUtilizabaAD+AL146.1.1ProductosAseoPersonalUtilizabaADJabónBarra+
-  AL146.1.2ProductosAseoPersonalUtilizabaADShampoo+AL146.1.3ProductosAseoPersonalUtilizabaADJabónintimo+
-  AL146.1.4ProductosAseoPersonalUtilizabaADCremaAfeitar+AL146.1.5ProductosAseoPersonalUtilizabaADPapelHigiénico+
-  AL146.1.6ProductosAseoPersonalUtilizabaADCremacuerpo+AL146.1.7ProductosAseoPersonalUtilizabaADAcondicionador+
-  AL146.1.8ProductosAseoPersonalUtilizabaADDesodorante+AL144.1ProductosDLimpiezAMásUsadosAD+
-  AL144.1.1ProductosDLimpiezAMásUsadosADJabónbarra+AL144.1.2ProductosDLimpiezAMásUsadosADBlanqueador+
-  AL144.1.3ProductosDLimpiezAMásUsadosADJabónCocina+AL144.1.4ProductosDLimpiezAMásUsadosADLimpiavidrios+
-  AL144.1.5ProductosDLimpiezAMásUsadosADTrapero+AL144.1.6ProductosDLimpiezAMásUsadosADLimpiaPisos+
-  AL144.1.7ProductosDLimpiezAMásUsadosADJabónpolvo+AL144.1.8ProductosDLimpiezAMásUsadosADEscoba+
-  AL143.1ComprabaProductosAseoParaCasaAD+AL27.1OcupaciónAD+AL28.1TipoContratoAD+AL30.1SuTrabajoEraAD+
-  AL31.1CuántoGanabaMensualmenteAD+AL29.1SectorTrabajoAD
+ALAD<-glm(incomes.ASE37.1AD~AL147.1TeníaMarcasPreferidasAseoPersonalAD+
+             AL148.1GastoMensualProductosAseoPersonalADUSD+
+             AL149.1UstedoFamiliaSeBañanAireLibreAD+AL150.1DondeBañabanRegularmenteAD+
+             AL145.1GastoMensualProductosLimpiezaUSDAD+
+             AL146.1.1ProductosAseoPersonalUtilizabaADJabónBarra+
+             AL146.1.2ProductosAseoPersonalUtilizabaADShampoo+
+             AL146.1.3ProductosAseoPersonalUtilizabaADJabónintimo+
+             AL146.1.4ProductosAseoPersonalUtilizabaADCremaAfeitar+
+             AL146.1.5ProductosAseoPersonalUtilizabaADPapelHigiénico+
+             AL146.1.6ProductosAseoPersonalUtilizabaADCremacuerpo+
+             AL146.1.7ProductosAseoPersonalUtilizabaADAcondicionador+
+             AL146.1.8ProductosAseoPersonalUtilizabaADDesodorante+
+             AL144.1.1ProductosDLimpiezAMásUsadosADJabónbarra+
+             AL144.1.2ProductosDLimpiezAMásUsadosADBlanqueador+
+             AL144.1.3ProductosDLimpiezAMásUsadosADJabónCocina+
+             AL144.1.4ProductosDLimpiezAMásUsadosADLimpiavidrios+
+             AL144.1.5ProductosDLimpiezAMásUsadosADTrapero+
+             AL144.1.6ProductosDLimpiezAMásUsadosADLimpiaPisos+
+             AL144.1.7ProductosDLimpiezAMásUsadosADJabónpolvo+
+             AL144.1.8ProductosDLimpiezAMásUsadosADEscoba+
+             AL143.1ComprabaProductosAseoParaCasaAD+
+             AL27.1OcupaciónAD+AL28.1TipoContratoAD+AL30.1SuTrabajoEraAD+
+             AL31.1CuántoGanabaMensualmenteAD+AL29.1SectorTrabajoAD,
+          family= poisson(link = "log"))
+summary(ASPAD)
 #Model TLAD-------------------------------
 TL153.1ActividadesRealizaEnTiempoLibreAD+TL153.1.1ActividadesRealizaEnTiempoLibreADTrabajar+
   TL153.1.2ActividadesRealizaEnTiempoLibreADRezar+TL153.1.3ActividadesRealizaEnTiempoLibreADComer+
