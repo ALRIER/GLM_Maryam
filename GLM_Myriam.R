@@ -48,7 +48,7 @@ incomes.ASE37.2DD<-as.numeric(Data$ASE37.2IngresosMensualesCasaDolaresDD)
 a<-glm(ASE32.1CuantasPersonasTieneIngresoHogarAD~SD_CuantasPersonasVivenConUstedAD+SD_NivelEduAD,family= poisson(link = "log"))
 Data$ASE37.1IngresosMensualesCasaDolaresAD
 #Model ASPAD-------------------------------------
-ASPAD<-glm(incomes.ASE37.1AD~ASP41.1antesSuViviendaContabaConServicioEnergíaAD+
+ASPAD<-glm(ASE32.1CuantasPersonasTieneIngresoHogarAD~ASP41.1antesSuViviendaContabaConServicioEnergíaAD+
              ASP44.1SuViviendaContabaConServicioRecogidaBasuraAD+
              ASP45.1SuViviendaContabaConServicioLíneaTelefonicaFijaAD+
              ASP47.1SuViviendaContabaConServicioInternetAD+
@@ -71,7 +71,7 @@ ASPADsummary<-summary(ASPAD)
 expASPAD<-exp(ASPADsummary$coefficients)-1
 lrtestASPAD<-lrtest(expASPAD)
 #Model ALAD-------------------------------
-ALAD<-glm(incomes.ASE37.1AD~AL147.1TeníaMarcasPreferidasAseoPersonalAD+
+ALAD<-glm(ASE32.1CuantasPersonasTieneIngresoHogarAD~AL147.1TeníaMarcasPreferidasAseoPersonalAD+
              AL148.1GastoMensualProductosAseoPersonalADUSD+
              AL149.1UstedoFamiliaSeBañanAireLibreAD+AL150.1DondeBañabanRegularmenteAD+
              AL145.1GastoMensualProductosLimpiezaUSDAD+
@@ -97,7 +97,7 @@ ALAD<-glm(incomes.ASE37.1AD~AL147.1TeníaMarcasPreferidasAseoPersonalAD+
           family= poisson(link = "log"))
 summary(ASPAD)
 #Model TLAD-------------------------------
-TL153.1ActividadesRealizaEnTiempoLibreAD+TL153.1.1ActividadesRealizaEnTiempoLibreADTrabajar+
+TLAD<-glm(ASE32.1CuantasPersonasTieneIngresoHogarAD~TL153.1ActividadesRealizaEnTiempoLibreAD+TL153.1.1ActividadesRealizaEnTiempoLibreADTrabajar+
   TL153.1.2ActividadesRealizaEnTiempoLibreADRezar+TL153.1.3ActividadesRealizaEnTiempoLibreADComer+
   TL153.1.4ActividadesRealizaEnTiempoLibreADAyudarLaboresDomestica+TL153.1.5ActividadesRealizaEnTiempoLibreADDormir+
   TL153.1.6ActividadesRealizaEnTiempoLibreADBuscartrabajo+TL152.1LugarDondePasaTiempoLibreAD+
@@ -105,7 +105,8 @@ TL153.1ActividadesRealizaEnTiempoLibreAD+TL153.1.1ActividadesRealizaEnTiempoLibr
   TL152.1.3LugarDondePasaTiempoLibreADCasa+TL152.1.4LugarDondePasaTiempoLibreADCasaAmigosFamiliares+
   TL153.1.7ActividadesRealizaEnTiempoLibreADHacerMercado+TL153.1.8ActividadesRealizaEnTiempoLibreADArreglosmecánicos+
   TL153.1.9ActividadesRealizaEnTiempoLibreADVertelevisión+TL154.1ElmarotrosLugaresNaturalesPreferidosParaTiempoLibreAD+
-  TL155.1EnTiempoLibreComparteFamiliaAD+TL156.1EnTiempoLibrePrefiereActividadesDomésticasAD
+  TL155.1EnTiempoLibreComparteFamiliaAD+TL156.1EnTiempoLibrePrefiereActividadesDomésticasAD,
+          family= poisson(link = "log"))
 
 C151.1HaSolicitadoCréditosoPrestamosDineroAD
 #Model TAD-------------------------------
@@ -127,7 +128,8 @@ T137.1QuéElementosTeCnologicosEstabanSuoHogarAD+T137.1.1QuéElementosTeCnologic
   T140.1.2ElectrodomesticosUtilizabanParaEntretenimientoADEquipoDs+
   T140.1.3ElectrodomesticosUtilizabanParaEntretenimientoADCelulari+
   T140.1.4ElectrodomesticosUtilizabanParaEntretenimientoADCelularb+
-  T141.1CómoObteníaElectrodomesticosAD+T142.1DóndeAdquirióLosELectrodomesticosAD
+  T141.1CómoObteníaElectrodomesticosAD+T142.1DóndeAdquirióLosELectrodomesticosAD,
+          family= poisson(link = "log"))
 #Model ASEDD-------------------------------
 ASE33.1VinculoFamiliarTieneMayorIngresoHogarAD+ASE33.1.1FamiliarTieneMayorIngresoHogarAD+
   ASE33.1.2FamiliarTieneMayorIngresoHogarAD+ASE33.1.3FamiliarTieneMayorIngresoHogarAD+ASE33.1.4FamiliarTieneMayorIngresoHogarAD+
@@ -137,7 +139,8 @@ ASE33.1VinculoFamiliarTieneMayorIngresoHogarAD+ASE33.1.1FamiliarTieneMayorIngres
   ASE38.1.6PersonaEncargadaDeFamiliaADOtro+ASE39.1PersonasDependenUstedAD+ASE34.1.3QuienAportaMásDineroCasaAntesHijosAD+
   ASE34.1.4QuienAportaMásDineroCasaAntesHermanosAD+ASE32.1CuantasPersonasTieneIngresoHogarAD+
   ASE34.1.1QuienAportaMásDineroCasaAntesPadreAD+ASE34.1.2QuienAportaMásDineroCasaAntesMadreAD+ASE38.1PersonaEncargadaDeFamiliaAD+
-  ASE38.1.1PersonaEncargadaDeFamiliaADPadre
+  ASE38.1.1PersonaEncargadaDeFamiliaADPadre,
+          family= poisson(link = "log"))
 
 #Model RAD-----------------------
 R121.1LugaresDondeGustabaDivertirseAD+R121.1.1LugaresDondeGustabaDivertirseADParque+
@@ -152,7 +155,8 @@ R121.1LugaresDondeGustabaDivertirseAD+R121.1.1LugaresDondeGustabaDivertirseADPar
   R123.1HaConsumidoAgunaDrogaAD+R128.1.1TipoDPropiedadesADCasa+R128.1.2TipoDPropiedadesADApartamento+
   R125.1CuántoDineroGastabaEnRecreaciónMesAD+R126.1TeníaPropiedadesAD+R128.1.3TipoDPropiedadesADCasa+
   R130.1CómoObtuvoPropiedadADTeniaPapelesDPropiedadAD+R129.1CómoObtuvoPropiedadAD+R131.1UstedEsUnicoDueñoDePropiedadAD+
-  R132.1TuvoNecesidadDAbandaonarSuPropiedadAD
+  R132.1TuvoNecesidadDAbandaonarSuPropiedadAD,
+          family= poisson(link = "log"))
 
 
 AR122.1.2ActivRealizabaParaDivertirseADrreglarLimpiar
@@ -166,7 +170,8 @@ EH113.1AlgúnMomentoHijosDejaronEstudiarPortrabajarAD+EH114.1PagaEducaciónHijos
   EH105.1HijosHanReprobadoAlgunAñoAD+EH106.1PorqueReprobaronAD+EH107.1FrecuenciaCompraÚtilesEscolaresAD+
   EH103.1MedioTrasporteUtilizabaParAllegarEscuelaAD+EH95.1ViviaConHijosAD+EH108.1CuantoGastabaCompraÚtilesAD+
   EH109.1NivelEducativOMásAltoAlcanzadoHijosAD+EH96.1SusHijosEstudiabanAD+EH97.1HijosEranBuenosEstudiantesAD+
-  EH110.1NivelAcadémicoMásBajoAlcanzadoHijosAD+EH111.1TipoDConstrucciónEscuelaAD+EH112.1AsisteReunionesDPadresMadresDFamiliaAD
+  EH110.1NivelAcadémicoMásBajoAlcanzadoHijosAD+EH111.1TipoDConstrucciónEscuelaAD+EH112.1AsisteReunionesDPadresMadresDFamiliaAD,
+          family= poisson(link = "log"))
 #Modelo LVAD---------------------
 LV53.1TechoAD+LV53.1.1TechoADTejaDBarro+LV53.1.2TechoADConcreto+
   LV53.1.3TechoADLata+LV53.2TechoAD+LV53.2.1TechoADZinc+LV53.2.2TechoADPrefabricado+LV53.2.3TechoADConcreto+
@@ -179,7 +184,8 @@ LV53.1TechoAD+LV53.1.1TechoADTejaDBarro+LV53.1.2TechoADConcreto+
   LV55.1.6PisosADOtro+LV56.1TamañoCasaAD+LV60.1PagoDArrendamientoADUSD+
   LV57.1TamañoCasaMetrosCuadradosAD+LV58.1TipoViviendaHabitabaAD+
   LV62.1PersonasVivenSuHogarMenoresD18AñosAD+
-  LV61.1PersonasVivenSuHogarMayoresD65AñosAD
+  LV61.1PersonasVivenSuHogarMayoresD65AñosAD,
+          family= poisson(link = "log"))
 
 
 AN87.1MercadosDonadosAD+AN88.1SubsidioParaCompraDAlimentosAD+
@@ -195,13 +201,15 @@ AN89.2.1ComidaConsumdaDiariamenteADDesayuno	AN89.2.2ComidaConsumdaDiariamenteADM
 AN89.2.5ComidaConsumdaDiariamenteADOnces
 AN91.1FrecuenciaConsumoCarneDCorderoAD
 AN92.1FrecuenciaConsumoPescadoAD+AN83.1PescaOCazaAD
-AN93.1FrecuenciaConsumoPollOAD
+AN93.1FrecuenciaConsumoPollOAD,
+          family= poisson(link = "log"))
 
 
 AD15Motivosdesplazamiento+AD16TipoDelDesplazamiento+AD17AQueGobernaturaLlego+AD18ElLugarDondeLlegoAVivir+
   AD19DesplazamientoMejoróCalidadVida+AD20CuantasVecesDesplazado+AD21DondeViveActualmente+AD22SeDesplazoPorNoConseguirEmpleo+
   AD23SeDesplazoPorLugarDondeViviaEraPeligroso+AD24SeDesplazoPorVecinosNoEstabanConformes+AD25AñoUltimoDesplazamiento+
-  AD26ActorDesplazamiento+AD14CiudadViviaAD
+  AD26ActorDesplazamiento+AD14CiudadViviaAD,
+          family= poisson(link = "log"))
 
 V135.1TienePreferenciAPorAlgunaMarcaAD+V134.1CadaCuantoAdquiriaLaRopaAD+V133.1CómoAdquiriaRopaAD+
   V136.1TienePreferenciaAlgunaMarcaDCalzadoAD
@@ -228,18 +236,21 @@ S65.1EstadoDSaludFamiliaAD
 
 SD_Sexo+SD_EdadEnElDesplazamiento+SD_EdadActual+SD_LugarNacimiento+SD_TieneMismaParejaAD+SD_EstadoCivilAD+SD_EstadoCivilDD+SD_NumHij@sAD+SD_NumHij@sDD+SD_EdadHijosDe0a3años+SD_EdadHijosDe4a7años+	SD_EdadHijosDe8a12años+	SD_EdadHijosDe13a18años	SD_EdadHijosDe19a29 años+	SD_EdadHijosDe30añosymás+   		SD_NivelEduActual		SD_CuantasPersonasVivenConUstedDD				
 
-AL27.2OcupaciónDD		AL28.2TipoContratoDD		AL29.2SectorTrabajoDD		AL30.2SuTrabajoDD		AL31.2CuántoGanaMensualmenteDD		
+AL27.2OcupaciónDD+AL28.2TipoContratoDD+AL29.2SectorTrabajoDD+AL30.2SuTrabajoDD+AL31.2CuántoGanaMensualmenteDD+AL143.2CompraProductosAseoParaCasaDD+AL144.2ProductosDLimpiezAMásUsadosDD+AL144.2.1ProductosDLimpiezAMásUsadosDDJabónbarra+AL144.2.2ProductosDLimpiezAMásUsadosDDBlanqueador+AL144.2.3ProductosDLimpiezAMásUsadosDDJabónCocina+AL144.2.4ProductosDLimpiezAMásUsadosDDLimpiaVidrios+AL144.2.5ProductosDLimpiezAMásUsadosDDTrapero+AL144.2.6ProductosDLimpiezAMásUsadosDDLimpiaPisos+AL144.2.7ProductosDLimpiezAMásUsadosDDJabónpolvo+AL144.2.8ProductosDLimpiezAMásUsadosDDEscoba+AL146.2ProductosAseoPersonalUtilizaDD+AL146.2.1ProductosAseoPersonalUtilizaDDJabónBarra+AL146.2.2ProductosAseoPersonalUtilizaDDShampoo+AL146.2.3ProductosAseoPersonalUtilizaDDJabónintimo+AL146.2.4ProductosAseoPersonalUtilizaDDCremaafeitar+AL146.2.5ProductosAseoPersonalUtilizaDDCremaCuerpo+AL146.2.6ProductosAseoPersonalUtilizaDDAcondicionador+AL146.2.7ProductosAseoPersonalUtilizaDDDesodorante+AL147.2TeníaMarcasPreferidasAseoPersonalDD+AL148.2GastoMensualProductosAseoPersonalDDUSD+AL149.2UstedoFamiliaSeBañanAireLibreDD+AL150.2DondeBañabanRegularmenteDD,
+          family= poisson(link = "log"))				
 
 
-ASE32.1CuantasPersonasTieneIngresoHogarDD						ASE33.2VinculoFamiliarConQuienTieneMayorIngresoHogarDD	ASE33.2.1FamiliarTieneMayorIngresoHogarDD	ASE33.2.2FamiliarTieneMayorIngresoHogarDD	ASE33.2.3FamiliarTieneMayorIngresoHogarDD	ASE33.2.4FamiliarTieneMayorIngresoHogarDD	ASE33.2.5FamiliarTieneMayorIngresoHogarDD			ASE34.1.5QuienAportaMás 		ASE34.2QuienAportaMásDineroCasaDD	ASE34.2.1QuienAportaMás DineroCasaAntesPadreDD	ASE34.2.2QuienAportaMás DineroCasaAntesMadreDD	ASE34.2.3QuienAportaMás DineroCasaAntesHijosDD	ASE34.2.4QuienAportaMás DineroCasaAntesHermanosDD	ASE34.2.5QuienAportaMás DineroCasaAntesParejaDD	ASE34.2.6QuienAportaMás DineroCasaAntesYoDD	ASE35.1LosIngresosFamiliaresEranAD	ASE35.2LosIngresosFamiliaresDD		ASE36.1.1FuenteIngresosAntesSubsidio	ASE36.1.2FuenteIngresosAntesPropiedades	ASE36.1.3FuenteIngresosAntesTrabajo	ASE36.2FuenteIngresosDespués	ASE36.2.1FuenteIngresosAntesSubsidio	ASE36.2.2FuenteIngresosAntesPropiedades	ASE36.2.3FuenteIngresosAntesTrabajo		ASE37.2IngresosMensuales Casa(Dolares)DD				ASE38.2PersonaEncargadaDeFamiliaDD	ASE38.2.1PersonaEncargadaDeFamiliaDDPadre	ASE38.2.2PersonaEncargadaDeFamiliaDDMadre	ASE38.2.3PersonaEncargadaDeFamiliaDDHijos	ASE38.2.4PersonaEncargadaDeFamiliaDDHermanos	ASE38.2.5PersonaEncargadaDeFamiliaDDAbuelos	ASE38.2.6PersonaEncargadaDeFamiliaDDYo	ASE38.2.7PersonaEncargadaDeFamiliaDDOtro		ASE39.2PersonasDependenUstedDD		
+ASE32.1CuantasPersonasTieneIngresoHogarDD+ASE33.2VinculoFamiliarConQuienTieneMayorIngresoHogarDD+ASE33.2.1FamiliarTieneMayorIngresoHogarDD+ASE33.2.2FamiliarTieneMayorIngresoHogarDD+ASE33.2.3FamiliarTieneMayorIngresoHogarDD+ASE33.2.4FamiliarTieneMayorIngresoHogarDD+ASE33.2.5FamiliarTieneMayorIngresoHogarDD+ASE34.1.5QuienAportaMás+ASE34.2QuienAportaMásDineroCasaDD+ASE34.2.1QuienAportaMás DineroCasaAntesPadreDD+ASE34.2.2QuienAportaMásDineroCasaAntesMadreDD+ASE34.2.3QuienAportaMásDineroCasaAntesHijosDD+ASE34.2.4QuienAportaMásDineroCasaAntesHermanosDD+ASE34.2.5QuienAportaMásDineroCasaAntesParejaDD+ASE34.2.6QuienAportaMásDineroCasaAntesYoDD+ASE35.1LosIngresosFamiliaresEranAD+ASE35.2LosIngresosFamiliaresDD+ASE36.1.1FuenteIngresosAntesSubsidio+ASE36.1.2FuenteIngresosAntesPropiedades+ASE36.1.3FuenteIngresosAntesTrabajo+ASE36.2FuenteIngresosDespués+ASE36.2.1FuenteIngresosAntesSubsidio+ASE36.2.2FuenteIngresosAntesPropiedades+ASE36.2.3FuenteIngresosAntesTrabajo+ASE37.2IngresosMensualesCasa(Dolares)DD+ASE38.2PersonaEncargadaDeFamiliaDD+ASE38.2.1PersonaEncargadaDeFamiliaDDPadre+ASE38.2.2PersonaEncargadaDeFamiliaDDMadre+ASE38.2.3PersonaEncargadaDeFamiliaDDHijos+ASE38.2.4PersonaEncargadaDeFamiliaDDHermanos+ASE38.2.5PersonaEncargadaDeFamiliaDDAbuelos+ASE38.2.6PersonaEncargadaDeFamiliaDDYo+ASE38.2.7PersonaEncargadaDeFamiliaDDOtro+ASE39.2PersonasDependenUstedDD,
+          family= poisson(link = "log"))		
 
 
-ASP40.2SuViviendaContabaConServicioGasDD	 	ASP41.2SuViviendaContabaConServicioENergíaDD		ASP42.2SuViviendaContabaConServicioAguaDD		ASP43.2SuViviendaContabaConServicioAlcantarilladoDD		ASP44.2SuViviendaContabaConServicioRecogidaBasuraDD		ASP45.2SuViviendaContabaConServicioLíneaTelefonicaFijaDD		ASP46.2SuViviendaContabaConServicioTvCablEDD		ASP47.2SuViviendaContabaConServicioInternetDD		ASP48.2SuViviendaContabaConServicioGasPropanoDD			ASP49.2CuálEsElServicioMásCaroDD	ASP49.2.1CuálEsElServicioMásCaroDDAlcantarillado	ASP49.2.2CuálEsElServicioMásCaroDDGas	ASP49.2.3CuálEsElServicioMásCaroDDLuz	ASP49.2.4CuálEsElServicioMásCaroDDAgua	ASP49.2.5CuálEsElServicioMásCaroDDTelefonia	ASP49.2.6CuálEsElServicioMásCaroDDInternet		
-ASP50.2CostosMensualesServiciosDDUSD 		ASP51.2ComoEsLaCalidadDeLosServiciosDD		ASP52.2QueHacíaConLosResiduosDD			
+ASP40.2SuViviendaContabaConServicioGasDD+ASP41.2SuViviendaContabaConServicioENergíaDD+ASP42.2SuViviendaContabaConServicioAguaDD+ASP43.2SuViviendaContabaConServicioAlcantarilladoDD+ASP44.2SuViviendaContabaConServicioRecogidaBasuraDD+ASP45.2SuViviendaContabaConServicioLíneaTelefonicaFijaDD+ASP46.2SuViviendaContabaConServicioTvCablEDD+ASP47.2SuViviendaContabaConServicioInternetDD+ASP48.2SuViviendaContabaConServicioGasPropanoDD+ASP49.2CuálEsElServicioMásCaroDD+ASP49.2.1CuálEsElServicioMásCaroDDAlcantarillado+ASP49.2.2CuálEsElServicioMásCaroDDGas+ASP49.2.3CuálEsElServicioMásCaroDDLuz+ASP49.2.4CuálEsElServicioMásCaroDDAgua+ASP49.2.5CuálEsElServicioMásCaroDDTelefonia+ASP49.2.6CuálEsElServicioMásCaroDDInternet+ASP50.2CostosMensualesServiciosDDUSD+ASP51.2ComoEsLaCalidadDeLosServiciosDD+ASP52.2QueHacíaConLosResiduosDD,
+          family= poisson(link = "log"))			
 
 
 
-LV54.2ParedesDD	LV54.1.1ParedesDDPlástico	LV54.1.2ParedesDDConcreto	LV54.1.3ParedesDDLata	LV54.1.4ParedesDDMadera	LV54.1.5ParedesDDTela		LV55.2PisosDD	LV55.2.1PisosDDTierra	LV55.2.2PisosDDCemento	LV55.2.3PisosDDLadrillo	LV55.2.4PisosDDBloque	LV55.2.5PisosDDPiedra	LV55.2.6PisosDDOtro		LV56.2TamañoCasaDD		LV57.2TamañoCasaMetrosCuadradosDD		LV58.2TipoViviendaHabitabaDD	LV59.1DondeViviaEraAD	LV59.2DondeViveEsDD		LV60.2PagoDArrendamientoDD (USD)		LV61.2PersonasVivenSuHogarMayoresD65AñosDD		LV62.1PersonasVivenSuHogarMenoresD18AñosDD	
+LV54.2ParedesDD+LV54.1.1ParedesDDPlástico+LV54.1.2ParedesDDConcreto+LV54.1.3ParedesDDLata+LV54.1.4ParedesDDMadera+LV54.1.5ParedesDDTela+LV55.2PisosDD+LV55.2.1PisosDDTierra+LV55.2.2PisosDDCemento+LV55.2.3PisosDDLadrillo+LV55.2.4PisosDDBloque+LV55.2.5PisosDDPiedra+LV55.2.6PisosDDOtro+LV56.2TamañoCasaDD+LV57.2TamañoCasaMetrosCuadradosDD+LV58.2TipoViviendaHabitabaDD+LV59.1DondeViviaEraAD+LV59.2DondeViveEsDD+LV60.2PagoDArrendamientoDDUSD+LV61.2PersonasVivenSuHogarMayoresD65AñosDD+LV62.1PersonasVivenSuHogarMenoresD18AñosDD,
+          family= poisson(link = "log"))	
 
 #Model SDD------------------------------------------------  
 S63.2KilogramosDD+S63.2AñosDD+S64.2EstadoDSaludDD+S65.2EstadoDSaludFamiliaDD+S67.2NúmeroVecesEnfermaAñoDD+
@@ -249,10 +260,12 @@ S63.2KilogramosDD+S63.2AñosDD+S64.2EstadoDSaludDD+S65.2EstadoDSaludFamiliaDD+S6
   S72.1.2SusHijosNacieroEnDDOtro+S73.2SeEncuentraAfiliadoSistemaSaludDD+S74.1ASolicitadocitaEspecialistaDD+
   S75CómoEraSservicioSalud+S76.1LasInstalacionesDelServicioSaludEranDD+S77.1.1DeCuantoAD+S77.2RealizabaPagoMensualServicioDSaludDD+
   S77.2.1DeCuantoDD+S78.2NoRecibioServiciosAFaltaDEquiposOProfesionalesDD+S79.2AlSolicitarServicioDSaludAtendíanInmediatamenteDD+
-  S80.2ConsiderabaLaPrestaciónDelServicioDSAludDD+S71.2.1AdóndeAcudeCndoEstabaEnfermoDDAux.Farmacia	
+  S80.2ConsiderabaLaPrestaciónDelServicioDSAludDD+S71.2.1AdóndeAcudeCndoEstabaEnfermoDDAux.Farmacia,
+          family= poisson(link = "log"))
 
 #Model ANDD--------------------------------------------------------------------
-AN81.2FrecuenciaCompraAlimentosAlMesDD+AN82.2LugarDCompADAlimentosDD+AN83.2PescaOCazaDD+AN84.2CultivandoDD+AN85.2IntercambioAlimentosUObjetosDD+AN86.2TomandolosDLaCanecaDD+AN87.1MercadosDonadosDD+AN88.2SubsidioParaCompraDAlimentosDD+AN89.2ComidaConsumdaDiariamenteDD+AN90.1FrecuenciaConsumoCarneDResDD+AN91.2FrecuenciaConsumoCarneDCorderoDD+AN92.2FrecuenciaConsumoPescadoDD+AN93.2FrecuenciaConsumoPolloDD+AN94.2FrecuenciaConsumoComidasRapidasDD		
+AN81.2FrecuenciaCompraAlimentosAlMesDD+AN82.2LugarDCompADAlimentosDD+AN83.2PescaOCazaDD+AN84.2CultivandoDD+AN85.2IntercambioAlimentosUObjetosDD+AN86.2TomandolosDLaCanecaDD+AN87.1MercadosDonadosDD+AN88.2SubsidioParaCompraDAlimentosDD+AN89.2ComidaConsumdaDiariamenteDD+AN90.1FrecuenciaConsumoCarneDResDD+AN91.2FrecuenciaConsumoCarneDCorderoDD+AN92.2FrecuenciaConsumoPescadoDD+AN93.2FrecuenciaConsumoPolloDD+AN94.2FrecuenciaConsumoComidasRapidasDD,
+          family= poisson(link = "log"))		
 
 #Model EHDD----------------------------------------------------------
 
@@ -265,17 +278,28 @@ EH96.2SusHijosEstudianDD+EH97.2HijosSonBuenosEstudiantesDD+EH98.2AQuéSistemaEdu
   EH113.2AlgúnMomentoHijosDejaronEstudiarPortrabajarDD+EH114.2PagaEducaciónHijosDD+EH114.2.1CuantoDD+
   EH115.2PagoEducaciónEsUnaCargaEconómicaDD+EH116.2HijosTenianMarcasPreferidasDÚtileSDD+EH117.2HaceTruequeObtenerÚtilesEscolaresDD+
   EH118.2CompraÚtilesEscolaresAntesHijosIniciaranClaseDD+EH119.2FirmóDocumentoFormalizarInscripciónColegioDD+
-  EH120.2NecesitabaUtilizarUniformeDD		
+  EH120.2NecesitabaUtilizarUniformeDD,
+          family= poisson(link = "log"))		
 
 #Model RDD--------------------------------------------
-R121.2LugaresDondeGustabaDivertirseDD	R121.2.1LugaresDondeGustabaDivertirseDDCasa	R121.2.2LugaresDondeGustabaDivertirseDDCasino	R121.2.3LugaresDondeGustabaDivertirseDDCasaAmigos o familiares	R121.2.4LugaresDondeGustabaDivertirseDDNoSeDivierte 				R123.2HaConsumidoAgunaDrogaDD		R124.2AlgúnfamiliarconsumeDrogaDD		R125.2CuántoDineroGastaEnRecreaciónMesDD		R126.1TeníaPropiedadesDD		R127.2CuantasPropiedadesTeniaDD				R128.2TipoDPropiedadesDD	R128.2.1TipoDPropiedadeDDCasa	R128.2.2TipoDPropiedadesDDOtro		R129.2CómoObtuvoPropiedadDD		R130.2CómoObtuvoPropiedadADTeniaPapelesDPropiedadDD		R131.2UstedEsUnicoDueñoDePropiedadDD		R132.2TuvoNecesidadDAbandaonarSuPropiedadDD		
+R121.2LugaresDondeGustabaDivertirseDD+R121.2.1LugaresDondeGustabaDivertirseDDCasa+R121.2.2LugaresDondeGustabaDivertirseDDCasino+R121.2.3LugaresDondeGustabaDivertirseDDCasaAmigosofamiliares+R121.2.4LugaresDondeGustabaDivertirseDDNoSeDivierte+R123.2HaConsumidoAgunaDrogaDD+R124.2AlgúnfamiliarconsumeDrogaDD+R125.2CuántoDineroGastaEnRecreaciónMesDD+R126.1TeníaPropiedadesDD+R127.2CuantasPropiedadesTeniaDD+R128.2TipoDPropiedadesDD+R128.2.1TipoDPropiedadeDDCasa+R128.2.2TipoDPropiedadesDDOtro+R129.2CómoObtuvoPropiedadDD+R130.2CómoObtuvoPropiedadADTeniaPapelesDPropiedadDD+R131.2UstedEsUnicoDueñoDePropiedadDD+R132.2TuvoNecesidadDAbandaonarSuPropiedadDD,
+          family= poisson(link = "log"))		
 
 #Model VDD---------------------------------------------------
-V133.2CómoAdquiriaRopaDD		V134.2CadaCuantoAdquiriaLaRopaDD		V135.2TienePreferenciAPorAlgunaMarcaDD		V136.2TienePreferenciaAlgunaMarcaDCalzadoDD		T137.2QuéElementosTeCnologicosEstanSuHogarDD	T137.2.1QuéElementosTeCnologicosEstanSuHogarDDTelevisor	T137.2.2QuéElementosTeCnologicosEstanSuHogarDDEquipoDSonido	T137.2.3QuéElementosTeCnologicosEstanSuHogarDDNevera	T137.2.4QuéElementosTeCnologicosEstanSuHogarDDLavadora	T137.2.5QuéElementosTeCnologicosEstanSuHogarDDEstufa	T137.2.6QuéElementosTeCnologicosEstanSuHogarDDHornoMicroondas	T137.2.7QuéElementosTeCnologicosEstanSuHogarDDTeléfonoFijo	T137.2.8QuéElementosTeCnologicosEstanSuHogarDDCelular	T137.2.9QuéElementosTeCnologicosEstanSuHogarDDPlancha	T137.2.10QuéElementosTeCnologicosEstanSuHogarDDRadio	T137.2.11QuéElementosTeCnologicosEstanSuHogarDDLicuadora		T138.2ElectrodomesticoMásImportanteSuCasaDD				T139.2ElectrodomesticoPreferidoPorHijosDD 	T139.2.1ElectrodomesticoPreferidoPorHijosDDTelevisor	T139.2.2ElectrodomesticoPreferidoPorHijosDDTeléfonofijo	T139.2.3ElectrodomesticoPreferidoPorHijosDDCelular		T140.2ElectrodomesticosUtilizaParaEntretenimientoDD	T140.2.1electrodomesticosUtilizaParaEntretenimientoDDelevisor	T140.2.2ElectrodomesticosUtilizaParaEntretenimientoDDEquipo de sonido	T140.2.3ElectrodomesticosUtilizaParaEntretenimientoDDCelularinteligente	T140.2.4ElectrodomesticosUtilizaParaEntretenimientoDDCelularbajagama		T141.2CómoObteníaElectrodomesticosDD		T142.2DóndeAdquirióLosELectrodomesticosDD		AL143.2CompraProductosAseoParaCasaDD		AL144.2ProductosDLimpiezAMásUsadosDD	AL144.2.1ProductosDLimpiezAMásUsadosDDJabónbarra	AL144.2.2ProductosDLimpiezAMásUsadosDDBlanqueador	AL144.2.3ProductosDLimpiezAMásUsadosDDJabónCocina	AL144.2.4ProductosDLimpiezAMásUsadosDDLimpiaVidrios	AL144.2.5ProductosDLimpiezAMásUsadosDDTrapero	AL144.2.6ProductosDLimpiezAMásUsadosDDLimpiaPisos	AL144.2.7ProductosDLimpiezAMásUsadosDDJabónpolvo	AL144.2.8ProductosDLimpiezAMásUsadosDDEscoba		AL146.2ProductosAseoPersonalUtilizaDD	AL146.2.1ProductosAseoPersonalUtilizaDDJabónBarra	AL146.2.2ProductosAseoPersonalUtilizaDDShampoo	AL146.2.3ProductosAseoPersonalUtilizaDDJabónintimo	AL146.2.4ProductosAseoPersonalUtilizaDDCremaafeitar 	AL146.2.5ProductosAseoPersonalUtilizaDDCremaCuerpo	AL146.2.6ProductosAseoPersonalUtilizaDDAcondicionador	AL146.2.7ProductosAseoPersonalUtilizaDDDesodorante		AL147.2TeníaMarcasPreferidasAseoPersonalDD		AL148.2GastoMensualProductosAseoPersonalDD(USD)		AL149.2UstedoFamiliaSeBañanAireLibreDD		AL150.2DondeBañabanRegularmenteDD		C151.2HasolicitadoCréditosoPrestamosDineroDD		TL152.2.1LugarDondePasaTiempoLibreDD	TL152.2.1LugarDondePasaTiempoLibreDDParque	TL152.2.2LugarDondePasaTiempoLibreDDCasa	TL152.2.3LugarDondePasaTiempoLibreDDCasaAmigosFamiliares		
+V133.2CómoAdquiriaRopaDD+V134.2CadaCuantoAdquiriaLaRopaDD+V135.2TienePreferenciAPorAlgunaMarcaDD+V136.2TienePreferenciaAlgunaMarcaDCalzadoDD,
+          family= poisson(link = "log"))	
+
+T137.2QuéElementosTeCnologicosEstanSuHogarDD+T137.2.1QuéElementosTeCnologicosEstanSuHogarDDTelevisor+T137.2.2QuéElementosTeCnologicosEstanSuHogarDDEquipoDSonido+T137.2.3QuéElementosTeCnologicosEstanSuHogarDDNevera+T137.2.4QuéElementosTeCnologicosEstanSuHogarDDLavadora+T137.2.5QuéElementosTeCnologicosEstanSuHogarDDEstufa+T137.2.6QuéElementosTeCnologicosEstanSuHogarDDHornoMicroondas+T137.2.7QuéElementosTeCnologicosEstanSuHogarDDTeléfonoFijo+T137.2.8QuéElementosTeCnologicosEstanSuHogarDDCelular+T137.2.9QuéElementosTeCnologicosEstanSuHogarDDPlancha+T137.2.10QuéElementosTeCnologicosEstanSuHogarDDRadio+T137.2.11QuéElementosTeCnologicosEstanSuHogarDDLicuadora+T138.2ElectrodomesticoMásImportanteSuCasaDD+T139.2ElectrodomesticoPreferidoPorHijosDD+T139.2.1ElectrodomesticoPreferidoPorHijosDDTelevisor+T139.2.2ElectrodomesticoPreferidoPorHijosDDTeléfonofijo+T139.2.3ElectrodomesticoPreferidoPorHijosDDCelular+T140.2ElectrodomesticosUtilizaParaEntretenimientoDD+T140.2.1electrodomesticosUtilizaParaEntretenimientoDDelevisor+T140.2.2ElectrodomesticosUtilizaParaEntretenimientoDDEquipodesonido+T140.2.3ElectrodomesticosUtilizaParaEntretenimientoDDCelularinteligente+T140.2.4ElectrodomesticosUtilizaParaEntretenimientoDDCelularbajagama+T141.2CómoObteníaElectrodomesticosDD+T142.2DóndeAdquirióLosELectrodomesticosDD+TL152.2.1LugarDondePasaTiempoLibreDD+TL152.2.1LugarDondePasaTiempoLibreDDParque+TL152.2.2LugarDondePasaTiempoLibreDDCasa+TL152.2.3LugarDondePasaTiempoLibreDDCasaAmigosFamiliares,
+          family= poisson(link = "log"))		
 
 #Model TLDD--------------------------------------  
-TL153.2Actividades RealizaEnTiempoLibreDD	TL153.2.1ActividadesRealizaEnTiempoLibreDDTrabajar	TL153.2.2ActividadesRealizaEnTiempoLibreDDRezar	TL153.2.3ActividadesRealizaEnTiempoLibreDDComer	TL153.2.4ActividadesRealizaEnTiempoLibreDDAyudarLaboresDomesticas	TL153.2.5ActividadesRealizaEnTiempoLibreDDDormir	TL153.2.6ActividadesRealizaEnTiempoLibreDDBuscarTrabajo	TL153.2.7ActividadesRealizaEnTiempoLibreDDArreglosmecánicos		
-TL154.2El mar,otrosLugaresNaturalesPreferidosParaTiempoLibreDD		TL155.2EnTiempoLibreComparteFamiliaDD		TL156.2EnTiempoLibrePrefiereActividadesDomésticasDD+ AL145.2GastoMensualProductosLimpiezaUSDDD	
+TL153.2Actividades+RealizaEnTiempoLibreDD+TL153.2.1ActividadesRealizaEnTiempoLibreDDTrabajar+TL153.2.2ActividadesRealizaEnTiempoLibreDDRezar+TL153.2.3ActividadesRealizaEnTiempoLibreDDComer+TL153.2.4ActividadesRealizaEnTiempoLibreDDAyudarLaboresDomesticas+TL153.2.5ActividadesRealizaEnTiempoLibreDDDormir+TL153.2.6ActividadesRealizaEnTiempoLibreDDBuscarTrabajo+TL153.2.7ActividadesRealizaEnTiempoLibreDDArreglosmecánicos+TL154.2ElmarotrosLugaresNaturalesPreferidosParaTiempoLibreDD+TL155.2EnTiempoLibreComparteFamiliaDD+TL156.2EnTiempoLibrePrefiereActividadesDomésticasDD+AL145.2GastoMensualProductosLimpiezaUSDDD,
+          family= poisson(link = "log"))	
+
+
+
+C151.2HasolicitadoCréditosoPrestamosDineroDD		
+
 
 #Variables por revisar------------------------
 157DondeViveActualmente	
